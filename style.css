@@ -87,15 +87,19 @@ h6 {
 
   --color-primary: #ff9800;
   --color-secondary: #ffc107;
-  --color-accent: #e91e63;
+  --color-accent: #cc1313;
 
   --color-bg: #fafafa;
   --color-surface: #ffffff;
 
   --color-text-primary: #1e1e1e;
   --color-text-secondary: #616161;
+  --color-text-inverse: #ffffff;
 
   --color-border: #e5e5e5;
+
+  --color-primary-hover: #ee9106;
+  --color-accent-hover: #b01010;
 
   /* ===== Spacing Scale (8px system) ===== */
 
@@ -139,6 +143,9 @@ h6 {
 
   --sidebar-width: 260px;
   --content-max-width: 1100px;
+  --header-height: 100px;
+  --icon-size: 30px;
+  --logo-size: 50px;
 }
 
 /* ============================= */
@@ -148,7 +155,6 @@ h6 {
 h1 {
   font-size: var(--fs-xl);
   font-weight: var(--fw-semibold);
-  margin-bottom: var(--space-5);
 }
 
 h2 {
@@ -162,7 +168,7 @@ p {
 }
 
 /* ============================= */
-/*            BODY              */
+/*            BODY               */
 /* ============================= */
 
 body {
@@ -173,7 +179,161 @@ body {
 }
 
 /* ============================= */
-/*           LAYOUT             */
+/*           LAYOUT              */
 /* ============================= */
 
-/* TODO */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  grid-column: 1;
+}
+
+.main-content {
+  grid-column: 2;
+}
+
+/* ============================= */
+/*           COMPONENTS          */
+/* ============================= */
+
+.button {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.primary-button {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-1);
+}
+
+.primary-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.error-button {
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+.error-button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  fill: var(--color-text-primary);
+}
+
+/* ============================= */
+/*           SIDEBAR-LOGO        */
+/* ============================= */
+
+.sidebar {
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-1);
+
+  height: var(--header-height);
+  border-bottom: 1px solid var(--color-border);
+  padding-left: var(--space-3);
+}
+
+.logo-icon {
+  fill: var(--color-primary);
+  width: var(--logo-size);
+  height: var(--logo-size);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) var(--space-5);
+}
+
+.actions > * {
+  width: 100%;
+}
+
+#new-button {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+}
+
+#new-button > svg {
+  fill: var(--color-text-inverse);
+}
+
+/* ============================= */
+/*           SIDEBAR-NAV         */
+/* ============================= */
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) var(--space-5);
+}
+
+.navigation ul {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+.navigation li {
+  width: 100%;
+}
+
+.navigation a {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: var(--space-1);
+
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: var(--fw-semibold);
+
+  padding: var(--space-1) var(--space-2);
+}
+
+/* ============================= */
+/*             DIALOG            */
+/* ============================= */
+
+dialog {
+  /* TODO */
+}
