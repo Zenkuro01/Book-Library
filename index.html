@@ -57,6 +57,7 @@
                     name="title"
                     id="title"
                     placeholder="Title"
+                    required
                   />
 
                   <label class="hidden-label" for="author">Author</label>
@@ -127,7 +128,12 @@
       </div>
 
       <main class="main-content">
-        <div id="library"></div>
+        <header class="header">
+          <h1 class="title">My Books</h1>
+        </header>
+        <section class="content">
+          <div class="content-cards-container" id="library"></div>
+        </section>
       </main>
     </div>
   </body>

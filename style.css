@@ -149,6 +149,8 @@ h6 {
   --dialog-width: 450px;
   --dialog-height: 300px;
   --checkbox-size: 18px;
+  --card-width: 300px;
+  --card-button-width: 150px;
 }
 
 /* ============================= */
@@ -428,4 +430,76 @@ body {
 .is-read-input-container > label {
   font-size: var(--fs-md);
   color: var(--color-text-primary);
+}
+
+/* ============================= */
+/*             MAIN-CONTENT      */
+/* ============================= */
+
+.header {
+  height: var(--header-height);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-3) var(--space-5);
+
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  background-color: var(--color-bg);
+}
+
+.content-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, var(--card-width));
+  gap: var(--space-3);
+  justify-content: center;
+  padding: var(--space-3) var(--space-5);
+}
+
+.book-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--space-1);
+}
+
+.book-card-title {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-1);
+}
+
+.book-card > p {
+  font-size: var(--fs-sm);
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.book-card > p .icon {
+  height: 1rem;
+  width: 1rem;
+  fill: var(--color-text-secondary);
+}
+
+.book-card-buttons-container {
+  display: flex;
+  gap: var(--space-1);
+
+  margin-top: auto;
+}
+
+.book-card-buttons-container > .button {
+  padding: var(--space-2) var(--space-3);
+}
+
+.book-card-buttons-container > .toggle-button {
+  min-width: var(--card-button-width);
 }

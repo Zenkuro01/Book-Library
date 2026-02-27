@@ -33,30 +33,32 @@ function displayBooks() {
     card.dataset.id = book.id;
 
     const title = document.createElement("h3");
+    title.classList.add("book-card-title");
     title.textContent = book.title;
 
+    const authorIcon = `
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+      </svg>
+    `;
+
     const author = document.createElement("p");
-    author.textContent = book.author;
+    author.innerHTML = `${authorIcon} ${book.author}`;
+
+    const pagesIcon = `
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M6 2h9a2 2 0 0 1 2 2v16l-5-3-5 3V4a2 2 0 0 1 2-2z"/>
+      </svg>
+    `;
 
     const pages = document.createElement("p");
-    pages.textContent = `${book.pages} pages`;
+    pages.innerHTML = `${pagesIcon} ${book.pages} pages`;
 
     const isRead = document.createElement("p");
     isRead.textContent = book.isRead ? "Read" : "Not Read";
 
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.classList.add("button");
-    deleteButton.classList.add("delete-button");
-    deleteButton.addEventListener("click", () => {
-      const id = book.id;
-      const index = myLibrary.indexOf(book);
-      if (index !== -1) {
-        myLibrary.splice(index, 1);
-
-        displayBooks();
-      }
-    });
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.classList.add("book-card-buttons-container");
 
     const toggleButton = document.createElement("button");
     toggleButton.textContent = book.isRead ? "Mark as unread" : "Mark as read";
@@ -68,12 +70,29 @@ function displayBooks() {
       displayBooks();
     });
 
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.classList.add("button");
+    deleteButton.classList.add("error-button");
+    deleteButton.addEventListener("click", () => {
+      const id = book.id;
+      const index = myLibrary.indexOf(book);
+      if (index !== -1) {
+        myLibrary.splice(index, 1);
+
+        displayBooks();
+      }
+    });
+
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(isRead);
-    card.appendChild(deleteButton);
-    card.appendChild(toggleButton);
+
+    buttonsContainer.appendChild(toggleButton);
+    buttonsContainer.appendChild(deleteButton);
+
+    card.appendChild(buttonsContainer);
 
     container.appendChild(card);
   });
