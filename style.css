@@ -87,7 +87,7 @@ h6 {
 
   --color-primary: #ff9800;
   --color-secondary: #ffc107;
-  --color-accent: #cc1313;
+  --color-accent: #d83c3c;
 
   --color-bg: #fafafa;
   --color-surface: #ffffff;
@@ -100,6 +100,8 @@ h6 {
 
   --color-primary-hover: #ee9106;
   --color-accent-hover: #b01010;
+
+  --color-toggle-off: lightgray;
 
   /* ===== Spacing Scale (8px system) ===== */
 
@@ -150,7 +152,7 @@ h6 {
   --dialog-height: 300px;
   --checkbox-size: 18px;
   --card-width: 300px;
-  --card-button-width: 150px;
+  --card-button-width: 100px;
 }
 
 /* ============================= */
@@ -433,7 +435,7 @@ body {
 }
 
 /* ============================= */
-/*             MAIN-CONTENT      */
+/*          MAIN-CONTENT         */
 /* ============================= */
 
 .header {
@@ -491,15 +493,73 @@ body {
 
 .book-card-buttons-container {
   display: flex;
+  justify-content: space-between;
   gap: var(--space-1);
 
   margin-top: auto;
+  padding-top: var(--space-3);
 }
 
 .book-card-buttons-container > .button {
   padding: var(--space-2) var(--space-3);
 }
 
-.book-card-buttons-container > .toggle-button {
-  min-width: var(--card-button-width);
+/* ============================= */
+/*          TOGGLE BTN           */
+/* ============================= */
+
+.read-toggle {
+  position: relative;
+
+  width: var(--card-button-width);
+  background: var(--color-toggle-off);
+  color: var(--color-text-secondary);
+
+  border-radius: 999px;
+  padding: var(--space-1);
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.read-toggle[data-active="true"] {
+  background: var(--color-primary);
+}
+
+.toggle-knob {
+  position: absolute;
+  width: var(--icon-size);
+  height: var(--icon-size);
+
+  background: var(--color-surface);
+  border-radius: 50%;
+}
+
+.read-toggle .toggle-knob {
+  transform: translateX(0);
+}
+
+.read-toggle[data-active="true"] .toggle-knob {
+  transform: translateX(
+    calc(var(--card-button-width) - var(--icon-size) - var(--space-2))
+  );
+}
+
+.read-label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-inverse);
+
+  width: 75%;
+  margin-left: auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+.read-toggle[data-active="true"] .read-label {
+  margin-left: 0;
+  margin-right: auto;
 }

@@ -54,21 +54,30 @@ function displayBooks() {
     const pages = document.createElement("p");
     pages.innerHTML = `${pagesIcon} ${book.pages} pages`;
 
-    const isRead = document.createElement("p");
-    isRead.textContent = book.isRead ? "Read" : "Not Read";
-
     const buttonsContainer = document.createElement("div");
     buttonsContainer.classList.add("book-card-buttons-container");
 
-    const toggleButton = document.createElement("button");
-    toggleButton.textContent = book.isRead ? "Mark as unread" : "Mark as read";
-    toggleButton.classList.add("button");
-    toggleButton.classList.add("toggle-button");
+    const toggleButton = document.createElement("div");
+    toggleButton.classList.add("read-toggle");
+
+    if (book.isRead) {
+      toggleButton.dataset.active = "true";
+    }
+
     toggleButton.addEventListener("click", () => {
       book.toggleRead();
-
       displayBooks();
     });
+
+    const readLabel = document.createElement("span");
+    readLabel.classList.add("read-label");
+    readLabel.textContent = "READ";
+
+    const toggleKnob = document.createElement("span");
+    toggleKnob.classList.add("toggle-knob");
+
+    toggleButton.appendChild(readLabel);
+    toggleButton.appendChild(toggleKnob);
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
@@ -87,7 +96,6 @@ function displayBooks() {
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
-    card.appendChild(isRead);
 
     buttonsContainer.appendChild(toggleButton);
     buttonsContainer.appendChild(deleteButton);
