@@ -146,6 +146,9 @@ h6 {
   --header-height: 100px;
   --icon-size: 30px;
   --logo-size: 50px;
+  --dialog-width: 450px;
+  --dialog-height: 300px;
+  --checkbox-size: 18px;
 }
 
 /* ============================= */
@@ -334,6 +337,95 @@ body {
 /*             DIALOG            */
 /* ============================= */
 
-dialog {
-  /* TODO */
+#add-dialog[open] {
+  width: var(--dialog-width);
+  background-color: var(--color-surface);
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+
+  margin: auto; /* restore centering */
+  position: fixed; /* ensure viewport centering */
+}
+
+#add-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+}
+
+.dialog-wrapper {
+  padding: var(--space-4);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+#book-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.book-form-top-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-content: flex-start;
+  gap: var(--space-2);
+}
+
+.book-form-bottom-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.dialog-title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+}
+
+.hidden-label {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.input {
+  font-size: var(--fs-md);
+  height: 2rem;
+  padding: var(--space-1) var(--space-2);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.is-read-input-container {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.is-read-input-container > input {
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+
+  cursor: pointer;
+}
+
+.is-read-input-container > label {
+  font-size: var(--fs-md);
+  color: var(--color-text-primary);
 }
